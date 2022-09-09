@@ -1,38 +1,26 @@
-.App {
-  text-align: center;
+* {
+    box-sizing: border-box !important;
+    margin: 0 auto !important;    
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    background-color: rgb(244, 216, 183) !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    min-height: 100vh !important;
+    width: 80%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1, h2, h3, h4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h1 {
+    text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Location Component */
+
+Form.Control {
+    color:rgb(211, 113, 0) !important;
 }
