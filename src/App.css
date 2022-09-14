@@ -4,10 +4,11 @@
 }
 
 body {
-    background-color: rgb(244, 216, 183) !important;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    min-height: 100vh !important;
+    background-color: rgb(155, 171, 217) !important;
+    font-family:'Courier New', Courier, monospace !important;
+    min-height: 120vh !important;
     width: 80%;
+    color: rgb(38, 36, 36);
 }
 
 h1, h2, h3, h4 {
@@ -18,9 +19,31 @@ h1 {
     text-align: center;
 }
 
+#app {
+    width:95%,
+}
 
-/* Location Component */
+@media only screen and (min-width: 1024px) {
+    #app {
+        width: 60%;
+    }
+}
 
-Form.Control {
-    color:rgb(211, 113, 0) !important;
+/* current-weather */
+
+#icon {
+    width: 10rem;
+}
+
+/* footer */
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 62vw;
+    max-height: 25vh;
+    padding-bottom: 1rem;
+}
+
+#footer svg {
+    max-height: 25vh;
 }
