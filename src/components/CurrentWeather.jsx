@@ -36,15 +36,15 @@ class CurrentWeather extends Component {
 
   render() {
     return (
-      <Container className="text-center my-4">
+      <Container className="text-center my-3">
         <Row>
-          <h3>
+          <h4>
             {this.props.city} {this.props.country}
-          </h3>
+          </h4>
         </Row>
         <Row>
         <img className="img-fluid" id="icon" src={"http://openweathermap.org/img/wn/" + this.state.icon + "@2x.png"} alt="weather-icon"></img>
-        <h5>{this.state.description}</h5>
+        <h6>{this.state.description}</h6>
         </Row>
       </Container>
     );

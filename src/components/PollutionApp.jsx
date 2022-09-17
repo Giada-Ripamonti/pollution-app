@@ -5,11 +5,11 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import Spinner from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
 
 import ResultsTable from "./ResultsTable";
 import CurrentWeather from "./CurrentWeather";
+import CurrentPosition from "./CurrentPosition";
 
 const ApiKey = "3ddd1d58f975dadc250ecff74638af9a";
 
@@ -55,16 +55,19 @@ class PollutionApp extends Component {
   render() {
     return (
       <Container id="app">
-        <Row className="my-3">
+        <Row className="my-4">
           <h1>air quality monitor</h1>
+        </Row>
+        <Row className="my-3">
+          <CurrentPosition apiKey={ApiKey} />
         </Row>
         <Row className="my-2">
           <Form onSubmit={this.handleSubmit}>
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-3 mw-100">
               <Form.Control
                 className="d-block w-50"
                 type="text"
-                placeholder="type here"
+                placeholder="type a city here"
                 aria-describedby="basic-addon"
                 required
                 autoFocus
@@ -77,7 +80,7 @@ class PollutionApp extends Component {
                 }
               />
               <Button type="submit" variant="dark" id="button-addon">
-                Results
+                RESULTS
               </Button>
             </InputGroup>
           </Form>
@@ -85,9 +88,14 @@ class PollutionApp extends Component {
 
         {this.state.searchQuery === "" && this.state.city === "" && (
           <Row className="text-center">
-            <Alert style={{backgroundColor: "rgba(199, 196, 193, 0.412)"}} className="w-100" variant="secondary">
-              Please, enter a city to see <br /> current weather and air pollution.
-              <svg className="w-50 d-block my-5"
+            <Alert
+              style={{ backgroundColor: "rgba(199, 196, 193, 0.412)" }}
+              className="w-100"
+              variant="secondary"
+            >
+              <p>Search for a city and press results <br /> to see <strong>current weather</strong> and <strong>air pollution</strong>.</p>
+              <svg
+                className="w-50 d-block my-5"
                 data-name="Layer 1"
                 viewBox="0 0 881.63 587.66"
                 xmlns="http://www.w3.org/2000/svg"
@@ -282,12 +290,6 @@ class PollutionApp extends Component {
           </Row>
         )}
 
-        {this.state.isLoading && (
-          <Row className="my-5">
-            <Spinner animation="border" variant="secondary" />
-          </Row>
-        )}
-
         {!this.state.searchQuery && this.state.city && (
           <div>
             <Row>
@@ -299,7 +301,7 @@ class PollutionApp extends Component {
                 apiKey={ApiKey}
               />
             </Row>
-            <Row>
+            <Row className="my-3">
               <ResultsTable
                 lat={this.state.lat}
                 lon={this.state.lon}

@@ -6,8 +6,6 @@
 body {
     background-color: rgb(155, 171, 217) !important;
     font-family:'Courier New', Courier, monospace !important;
-    min-height: 120vh !important;
-    width: 80%;
     color: rgb(38, 36, 36);
 }
 
@@ -19,31 +17,32 @@ h1 {
     text-align: center;
 }
 
-#app {
-    width:95%,
+#main {
+    width:95%;
+    min-height: 80vh
 }
 
 @media only screen and (min-width: 1024px) {
     #app {
-        width: 60%;
+        width: 70%;
     }
 }
 
 /* current-weather */
 
 #icon {
-    width: 10rem;
+    width: 8rem;
 }
 
 /* footer */
 #footer {
-    position: fixed;
-    bottom: 0;
-    left: 62vw;
-    max-height: 25vh;
-    padding-bottom: 1rem;
+    position: relative;
+    bottom: 0 !important;
+    padding: 2rem 1rem;
+    text-align: center;
 }
 
 #footer svg {
     max-height: 25vh;
+    margin: 0 auto;
 }

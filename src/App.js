@@ -1,11 +1,16 @@
 import "./App.css";
+
+import Container from "react-bootstrap/Container";
+
 import Footer from "./components/Footer";
 import PollutionApp from "./components/PollutionApp";
 
 function App() {
   return (
     <>
-      <PollutionApp />
+      <Container id="main">
+        <PollutionApp />
+      </Container>
       <Footer />
     </>
   );
