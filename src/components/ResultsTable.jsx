@@ -26,7 +26,6 @@ class ResultsTable extends Component {
 
    /*  this.sulphurBadge();
     this.ammoniaBadge();
-    
     this.nitrogenBadge(); */
     try {
       const response = await fetch(
@@ -78,6 +77,15 @@ class ResultsTable extends Component {
     }
   };
 
+  particulate10Badge = (x) => {
+    if (x < 50) {
+      this.setState({ particulate10: ["light", "good"] });
+    } else if ((x > 50) && (x < 90)) {
+      this.setState({ particulate10: ["secondary", "moderate"] });
+    } else if (x > 90) {
+      this.setState({ particulate10: ["dark", "bad"] });
+    }
+  };
 
 /*  sulphurBadge = () => {
     if (this.state.so2 < 80) {
@@ -98,19 +106,7 @@ class ResultsTable extends Component {
       this.setState({ ammonia: ["dark", "bad"] });
     }
   };
-  
 
-  
-
-  particulate10Badge = () => {
-    if (this.state.pm10 < 50) {
-      this.setState({ particulate10: ["light", "good"] });
-    } else if ((this.state.pm10 > 50) && (this.state.pm10 < 90)) {
-      this.setState({ particulate10: ["secondary", "moderate"] });
-    } else {
-      this.setState({ particulate10: ["dark", "bad"] });
-    }
-  };
 
   nitrogenBadge = () => {
     if (this.state.no2 < 80) {
@@ -122,6 +118,7 @@ class ResultsTable extends Component {
     }
   };
  */
+
   render() {
     return (
       <Table className="w-80" striped borderless size="sm" responsive="sm">
