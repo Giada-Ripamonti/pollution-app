@@ -20,15 +20,17 @@ class ResultsTable extends Component {
   };
 
   componentDidMount = async (prevProps) => {
-    this.ozoneBadge();
-    this.sulphurBadge();
+    this.ozoneBadge(this.state.o3);
+    this.particulate2Badge(this.state.pm2);
+    this.particulate10Badge(this.state.pm10);
+
+   /*  this.sulphurBadge();
     this.ammoniaBadge();
-    this.particulate2Badge();
-    this.particulate10Badge();
-    this.nitrogenBadge();
+    
+    this.nitrogenBadge(); */
     try {
       const response = await fetch(
-        "http://api.openweathermap.org/data/2.5/air_pollution?" +
+        "https://api.openweathermap.org/data/2.5/air_pollution?" +
           "lat=" +
           this.props.lat +
           "&lon=" +
@@ -56,17 +58,28 @@ class ResultsTable extends Component {
     }
   };
 
-  ozoneBadge = () => {
-    if (this.state.o3 < 100) {
+  ozoneBadge = (x) => {
+    if (x < 100) {
       this.setState({ ozone: ["light", "good"] });
-    } else if ((this.this.state.o3 > 100) && (this.this.state.o3 < 200)) {
+    } else if ((x > 100) && (x < 200)) {
       this.setState({ ozone: ["secondary", "moderate"] });
-    } else if (this.state.o3 > 200) {
+    } else if (x > 200) {
       this.setState({ ozone: ["dark", "bad"] });
     }
   };
 
-  sulphurBadge = () => {
+  particulate2Badge = (x) => {
+    if (x < 30) {
+      this.setState({ particulate2: ["light", "good"] });
+    } else if ((x > 30) && (x < 100)) {
+      this.setState({ particulate2: ["secondary", "moderate"] });
+    } else if (x > 100) {
+      this.setState({ particulate2: ["dark", "bad"] });
+    }
+  };
+
+
+/*  sulphurBadge = () => {
     if (this.state.so2 < 80) {
       this.setState({ sulphur: ["light", "good"] });
     } else if ((this.state.so2 > 80) && (this.state.so2 < 800)) {
@@ -85,16 +98,9 @@ class ResultsTable extends Component {
       this.setState({ ammonia: ["dark", "bad"] });
     }
   };
+  
 
-  particulate2Badge = () => {
-    if (this.state.pm2 < 30) {
-      this.setState({ particulate2: ["light", "good"] });
-    } else if ((this.state.pm2 > 30) && (this.state.pm2 < 100)) {
-      this.setState({ particulate2: ["secondary", "moderate"] });
-    } else {
-      this.setState({ particulate2: ["dark", "bad"] });
-    }
-  };
+  
 
   particulate10Badge = () => {
     if (this.state.pm10 < 50) {
@@ -115,7 +121,7 @@ class ResultsTable extends Component {
       this.setState({ nitrogen: ["dark", "bad"] });
     }
   };
-
+ */
   render() {
     return (
       <Table className="w-80" striped borderless size="sm" responsive="sm">

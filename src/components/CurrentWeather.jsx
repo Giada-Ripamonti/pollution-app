@@ -43,7 +43,7 @@ class CurrentWeather extends Component {
           </h4>
         </Row>
         <Row>
-        <img className="img-fluid" id="icon" src={"http://openweathermap.org/img/wn/" + this.state.icon + "@2x.png"} alt="weather-icon"></img>
+        <img className="img-fluid" id="icon" src={"https://openweathermap.org/img/wn/" + this.state.icon + "@2x.png"} alt="weather-icon"></img>
         <h6>{this.state.description}</h6>
         </Row>
       </Container>

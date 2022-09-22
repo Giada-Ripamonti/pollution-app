@@ -22,7 +22,7 @@ const CurrentPosition = () => {
   const getCity = async () => {
     try {
       const response = await fetch(
-        "http://api.openweathermap.org/geo/1.0/reverse?lat=" +
+        "https://api.openweathermap.org/geo/1.0/reverse?lat=" +
           coords.latitude +
           "&lon=" +
           coords.longitude +
