@@ -59,7 +59,7 @@ class ResultsTable extends Component {
   ozoneBadge = () => {
     if (this.state.o3 < 100) {
       this.setState({ ozone: ["light", "good"] });
-    } else if (100 < (this.this.state.o3) < 200) {
+    } else if ((this.this.state.o3 > 100) && (this.this.state.o3 < 200)) {
       this.setState({ ozone: ["secondary", "moderate"] });
     } else if (this.state.o3 > 200) {
       this.setState({ ozone: ["dark", "bad"] });
@@ -69,7 +69,7 @@ class ResultsTable extends Component {
   sulphurBadge = () => {
     if (this.state.so2 < 80) {
       this.setState({ sulphur: ["light", "good"] });
-    } else if (80 < (this.state.so2) < 800) {
+    } else if ((this.state.so2 > 80) && (this.state.so2 < 800)) {
       this.setState({ sulphur: ["secondary", "moderate"] });
     } else if (this.state.so2 > 800) {
       this.setState({ sulphur: ["dark", "bad"] });
@@ -79,7 +79,7 @@ class ResultsTable extends Component {
   ammoniaBadge = () => {
     if (this.state.nh3 < 400) {
       this.setState({ ammonia: ["light", "good"] });
-    } else if (400 < (this.state.nh3) < 1200) {
+    } else if ((this.state.nh3 > 400) && (this.state.nh3 < 1200)) {
       this.setState({ ammonia: ["secondary", "moderate"] });
     } else if (this.state.nh3 > 1200) {
       this.setState({ ammonia: ["dark", "bad"] });
@@ -89,9 +89,9 @@ class ResultsTable extends Component {
   particulate2Badge = () => {
     if (this.state.pm2 < 30) {
       this.setState({ particulate2: ["light", "good"] });
-    } if ( 30 < (this.state.pm2) < 100) {
+    } else if ((this.state.pm2 > 30) && (this.state.pm2 < 100)) {
       this.setState({ particulate2: ["secondary", "moderate"] });
-    } if (this.state.pm2 > 100) {
+    } else {
       this.setState({ particulate2: ["dark", "bad"] });
     }
   };
@@ -99,9 +99,9 @@ class ResultsTable extends Component {
   particulate10Badge = () => {
     if (this.state.pm10 < 50) {
       this.setState({ particulate10: ["light", "good"] });
-    } else if (50 < (this.state.pm10) < 90) {
+    } else if ((this.state.pm10 > 50) && (this.state.pm10 < 90)) {
       this.setState({ particulate10: ["secondary", "moderate"] });
-    } else if (this.state.pm10 > 90) {
+    } else {
       this.setState({ particulate10: ["dark", "bad"] });
     }
   };
@@ -109,7 +109,7 @@ class ResultsTable extends Component {
   nitrogenBadge = () => {
     if (this.state.no2 < 80) {
       this.setState({ nitrogen: ["light", "good"] });
-    } else if (80 < (this.state.no2) < 280) {
+    } else if ((this.state.no2 > 80) && (this.state.no2 < 280)) {
       this.setState({ nitrogen: ["secondary", "moderate"] });
     } else if (this.state.no2 > 280) {
       this.setState({ nitrogen: ["dark", "bad"] });
