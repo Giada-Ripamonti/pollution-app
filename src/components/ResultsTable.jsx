@@ -46,7 +46,8 @@ class ResultsTable extends Component {
             this.particulate2Badge(this.state.pm2);
             this.particulate10Badge(this.state.pm10);
             this.sulphurBadge(this.state.so2);
-            this.ammoniaBadge(this.state.nh3)
+            this.ammoniaBadge(this.state.nh3);
+            this.nitrogenBadge(this.state.no2);
           }
         );
         console.log(results);
