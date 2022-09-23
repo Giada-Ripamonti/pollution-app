@@ -20,13 +20,6 @@ class ResultsTable extends Component {
   };
 
   componentDidMount = async (prevProps) => {
-    this.ozoneBadge(this.state.o3);
-    this.particulate2Badge(this.state.pm2);
-    this.particulate10Badge(this.state.pm10);
-
-   /*  this.sulphurBadge();
-    this.ammoniaBadge();
-    this.nitrogenBadge(); */
     try {
       const response = await fetch(
         "https://api.openweathermap.org/data/2.5/air_pollution?" +
@@ -37,17 +30,25 @@ class ResultsTable extends Component {
           "&appid=" +
           this.props.apiKey
       );
-
       if (response.ok) {
         const results = await response.json();
-        this.setState({
-          no2: results.list[0].components.no2,
-          o3: results.list[0].components.o3,
-          so2: results.list[0].components.so2,
-          pm2: results.list[0].components.pm2_5,
-          pm10: results.list[0].components.pm10,
-          nh3: results.list[0].components.nh3,
-        });
+        this.setState(
+          {
+            no2: results.list[0].components.no2,
+            o3: results.list[0].components.o3,
+            so2: results.list[0].components.so2,
+            pm2: results.list[0].components.pm2_5,
+            pm10: results.list[0].components.pm10,
+            nh3: results.list[0].components.nh3,
+          },
+          () => {
+            this.ozoneBadge(this.state.o3);
+            this.particulate2Badge(this.state.pm2);
+            this.particulate10Badge(this.state.pm10);
+            this.sulphurBadge(this.state.so2);
+            this.ammoniaBadge(this.state.nh3)
+          }
+        );
         console.log(results);
       } else {
         console.log("error");
@@ -60,7 +61,7 @@ class ResultsTable extends Component {
   ozoneBadge = (x) => {
     if (x < 100) {
       this.setState({ ozone: ["light", "good"] });
-    } else if ((x > 100) && (x < 200)) {
+    } else if (x > 100 && x < 200) {
       this.setState({ ozone: ["secondary", "moderate"] });
     } else if (x > 200) {
       this.setState({ ozone: ["dark", "bad"] });
@@ -70,7 +71,7 @@ class ResultsTable extends Component {
   particulate2Badge = (x) => {
     if (x < 30) {
       this.setState({ particulate2: ["light", "good"] });
-    } else if ((x > 30) && (x < 100)) {
+    } else if (x > 30 && x < 100) {
       this.setState({ particulate2: ["secondary", "moderate"] });
     } else if (x > 100) {
       this.setState({ particulate2: ["dark", "bad"] });
@@ -80,44 +81,42 @@ class ResultsTable extends Component {
   particulate10Badge = (x) => {
     if (x < 50) {
       this.setState({ particulate10: ["light", "good"] });
-    } else if ((x > 50) && (x < 90)) {
+    } else if (x > 50 && x < 90) {
       this.setState({ particulate10: ["secondary", "moderate"] });
     } else if (x > 90) {
       this.setState({ particulate10: ["dark", "bad"] });
     }
   };
 
-/*  sulphurBadge = () => {
-    if (this.state.so2 < 80) {
+  sulphurBadge = (x) => {
+    if (x < 80) {
       this.setState({ sulphur: ["light", "good"] });
-    } else if ((this.state.so2 > 80) && (this.state.so2 < 800)) {
+    } else if (x > 80 && x < 800) {
       this.setState({ sulphur: ["secondary", "moderate"] });
-    } else if (this.state.so2 > 800) {
+    } else if (x > 800) {
       this.setState({ sulphur: ["dark", "bad"] });
     }
   };
 
-  ammoniaBadge = () => {
-    if (this.state.nh3 < 400) {
+  ammoniaBadge = (x) => {
+    if (x < 400) {
       this.setState({ ammonia: ["light", "good"] });
-    } else if ((this.state.nh3 > 400) && (this.state.nh3 < 1200)) {
+    } else if (x > 400 && x < 800) {
       this.setState({ ammonia: ["secondary", "moderate"] });
-    } else if (this.state.nh3 > 1200) {
+    } else if (x > 1200) {
       this.setState({ ammonia: ["dark", "bad"] });
     }
   };
 
-
-  nitrogenBadge = () => {
-    if (this.state.no2 < 80) {
+  nitrogenBadge = (x) => {
+    if (x < 80) {
       this.setState({ nitrogen: ["light", "good"] });
-    } else if ((this.state.no2 > 80) && (this.state.no2 < 280)) {
+    } else if (x > 80 && x < 280) {
       this.setState({ nitrogen: ["secondary", "moderate"] });
-    } else if (this.state.no2 > 280) {
+    } else if (x > 280) {
       this.setState({ nitrogen: ["dark", "bad"] });
     }
   };
- */
 
   render() {
     return (
